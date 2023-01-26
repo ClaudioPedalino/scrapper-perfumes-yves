@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using scrapper_perfumes_yves_console.Models;
 using System.Reflection;
 
 var dirverPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -28,23 +29,24 @@ using (IWebDriver driver = new ChromeDriver(dirverPath))
 
     foreach (var item in items)
     {
-        var hasStock = true;
-
-        var name = item.FindElement(By.TagName("h3")).Text;
-        var price = item.FindElement(By.ClassName("products-feed__product-price")).Text;
-        var url = item.FindElement(By.TagName("h3")).FindElement(By.TagName("a")).GetAttribute("href");
         var media = item
             .FindElement(By.ClassName("products-feed__product-media"))
             .FindElement(By.TagName("a"));
 
-        var image = media.FindElement(By.TagName("img")).GetAttribute("src");
+        var currentItem = new Item();
+
+        currentItem.Name = item.FindElement(By.TagName("h3")).Text;
+        currentItem.Price = item.FindElement(By.ClassName("products-feed__product-price")).Text;
+        currentItem.DetailUrl = item.FindElement(By.TagName("h3")).FindElement(By.TagName("a")).GetAttribute("href");
+        currentItem.ImageUrl = media.FindElement(By.TagName("img")).GetAttribute("src");
+        currentItem.HasStock = true;
 
         try
         {
             var noStock = media.FindElement(By.TagName("span"));
             if (noStock != null)
             {
-                hasStock = false;
+                currentItem.HasStock = false;
             }
         }
         catch (Exception)
@@ -53,18 +55,17 @@ using (IWebDriver driver = new ChromeDriver(dirverPath))
         }
 
 
-        if (hasStock)
-        {
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
-        }
-        else
-        {
-            Console.ForegroundColor = ConsoleColor.DarkRed;
-        }
+        Console.ForegroundColor = currentItem.HasStock ? ConsoleColor.DarkGreen : ConsoleColor.DarkRed;
 
-        Console.WriteLine($"Name is: {name} || Price is: {price}");
-        Console.WriteLine($"Url is: {url}");
-        Console.WriteLine($"Image sourse is: {image}");
+        Console.WriteLine($"Name is: {currentItem.Name} || Price is: {currentItem.Price}");
+        Console.WriteLine($"Url is: {currentItem.DetailUrl}");
+        //Console.WriteLine($"Image sourse is: {currentItem.ImageUrl}");
+
+        if (currentItem.HasStock)
+            Console.WriteLine($"Stock status is: Avaiable");
+        else
+            Console.WriteLine($"Stock status is: No stock");
+
         Console.WriteLine("...");
 
         Console.ResetColor();
