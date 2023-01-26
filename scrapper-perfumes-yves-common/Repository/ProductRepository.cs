@@ -17,6 +17,7 @@ namespace scrapper_perfumes_yves_common.Repository
             return _dataContext.Products.ToList();
         }
 
+
         public void SaveItemsBySite(string section, List<Product> scrappedItems)
         {
             foreach (var entity in _dataContext.Products.Where(x => x.Section == section))
@@ -35,11 +36,12 @@ namespace scrapper_perfumes_yves_common.Repository
         }
 
 
-        //public static void ResetData(this DataContext dataContext)
-        //{
-        //    foreach (var entity in dataContext.Items)
-        //        dataContext.Items.Remove(entity);
-        //    dataContext.SaveChanges();
-        //}
+        public void ResetData()
+        {
+            foreach (var entity in _dataContext.Products)
+                _dataContext.Products.Remove(entity);
+
+            _dataContext.SaveChanges();
+        }
     }
 }

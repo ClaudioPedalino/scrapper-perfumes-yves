@@ -18,7 +18,7 @@ namespace scrapper_perfumes_yves_common.Services
             _repo = repo;
         }
 
-        public void Scrap()
+        public void ScrapYvesSites()
         {
             using IWebDriver driver = DriverExtensions.GetDriver();
 
@@ -31,13 +31,14 @@ namespace scrapper_perfumes_yves_common.Services
                 Scrapper.LoadWholeData(driver);
 
                 var scrappedItems = Scrapper.GetItemsData(driver, site);
+                
                 if (_configuration.Value.PrintDataInConsole)
                     Printer.PrintItemDetail(scrappedItems);
 
                 _repo.SaveItemsBySite(site.Section, scrappedItems);
             }
 
-            driver.Finish();
+            driver.Quit();
         }
 
 

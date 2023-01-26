@@ -20,7 +20,7 @@ namespace scrapper_perfumes_api.Controllers
         [HttpGet(Name = "bulk-yves")]
         public IResult BulkYvesSiteToDatabase()
         {
-            _service.Scrap();
+            _service.ScrapYvesSites();
             return Results.Ok("bulk process finished succesfully");
         }
     }

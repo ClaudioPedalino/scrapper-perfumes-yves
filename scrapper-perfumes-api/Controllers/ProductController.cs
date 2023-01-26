@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OutputCaching;
 using scrapper_perfumes_yves_common.Interfaces;
 
 [ApiController]
@@ -16,6 +17,7 @@ public class ProductController : ControllerBase
 
 
     [HttpGet]
+    //[OutputCache(Duration = 30)]
     public IResult GetAll()
     {
         var result = _service.GetAll();
@@ -30,5 +32,14 @@ public class ProductController : ControllerBase
         var result = _service.GetOverview();
 
         return Results.Ok(result);
+    }
+
+
+    [HttpGet("reset-yves")]
+    public IResult ResetYves()
+    {
+        _service.ResetYvesData();
+
+        return Results.Ok("finish");
     }
 }

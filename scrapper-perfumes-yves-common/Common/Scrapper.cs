@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using scrapper_perfumes_yves_common.Extension;
 using scrapper_perfumes_yves_common.Models;
 using scrapper_perfumes_yves_common.ServiceConfiguration;
 
@@ -41,12 +42,13 @@ namespace scrapper_perfumes_yves_common.Common
                 var currentItem = new Product();
 
                 currentItem.Name = item.FindElement(By.TagName("h3")).Text;
-                currentItem.Price = Convert.ToDecimal(item.FindElement(By.ClassName("products-feed__product-price")).Text);
+
+                currentItem.Price = item.FindElement(By.ClassName("products-feed__product-price")).Text.GetPriceFromHtmlPriceInput();
                 currentItem.DetailUrl = item.FindElement(By.TagName("h3")).FindElement(By.TagName("a")).GetAttribute("href");
                 currentItem.ImageUrl = media.FindElement(By.TagName("img")).GetAttribute("src");
                 currentItem.HasStock = true;
                 currentItem.Section = site.Section;
-                currentItem.CreatedAt = DateTime.Now.Date;
+                currentItem.CreatedAt = DateTime.UtcNow;
                 //currentItem.PriceReseller = 0;
 
                 try

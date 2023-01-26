@@ -17,6 +17,8 @@ builder.Services.AddSwaggerGen();
 IConfiguration configuration = builder.Configuration;
 builder.Services.Configure<Configuration>(configuration.GetSection(nameof(Configuration)));
 
+builder.Services.AddOutputCache();
+
 builder.Services.AddTransient<IScrapperService, ScrapperService>();
 builder.Services.AddTransient<IProductService, ProductService>();
 builder.Services.AddTransient<IProductRepository, ProductRepository>();
@@ -25,6 +27,7 @@ builder.Services.AddDbContext<DataContext>();
 
 
 var app = builder.Build();
+app.UseOutputCache();
 app.UseSwagger();
 app.UseSwaggerUI();
 
