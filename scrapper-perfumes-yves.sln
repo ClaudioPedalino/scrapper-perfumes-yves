@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "scrapper-perfumes-yves-cons
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "scrapper-perfumes-yves-data", "scrapper-perfumes-yves-data\scrapper-perfumes-yves-data.csproj", "{C57AEBCF-2E45-4171-9C15-6088AFB3FF0F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "scrapper-perfumes-yves-common", "scrapper-perfumes-yves-common\scrapper-perfumes-yves-common.csproj", "{F14C9D72-7635-44EC-A122-AFD1F92B4BF9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{C57AEBCF-2E45-4171-9C15-6088AFB3FF0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C57AEBCF-2E45-4171-9C15-6088AFB3FF0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C57AEBCF-2E45-4171-9C15-6088AFB3FF0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F14C9D72-7635-44EC-A122-AFD1F92B4BF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F14C9D72-7635-44EC-A122-AFD1F92B4BF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F14C9D72-7635-44EC-A122-AFD1F92B4BF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F14C9D72-7635-44EC-A122-AFD1F92B4BF9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

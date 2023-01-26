@@ -1,33 +1,21 @@
 ﻿using OpenQA.Selenium;
+using scrapper_perfumes_yves_common.Configuration;
 using scrapper_perfumes_yves_console.Common;
-using scrapper_perfumes_yves_console.Configuration;
 using scrapper_perfumes_yves_console.Extension;
-using scrapper_perfumes_yves_data;
+using scrapper_perfumes_yves_data.Util;
+
+Config configuration = ConfigurationFile.GetConfiguration();
 
 using (IWebDriver driver = DriverExtensions.GetDriver())
 {
-    foreach (var site in Config.Sites)
+    foreach (var site in configuration.Sites)
     {
-        driver.GoTo(site.Value);
+        driver.GoTo(site.Url);
         Scrapper.LoadWholeData(driver);
 
-        var items = Scrapper.GetItemsData(driver);
+        var scrappedItems = Scrapper.GetItemsData(driver, site);
 
-        //Console.WriteLine($"Total items {site.Key}: {items.Count}");
-
-
-
-
-        using var dataContext = new DataContext();
-        
-        // 01 obtener items actuales
-        var currentData = dataContext.Items.Count();
-
-        // 02 Filtrar actualizaciones
-
-        // 03 Actualizar
-        dataContext.Items.AddRange(items);
-        dataContext.SaveChanges();
+        DataUtil.SaveItemsBySite(site.Section, scrappedItems);
     }
 
     driver.Finish();

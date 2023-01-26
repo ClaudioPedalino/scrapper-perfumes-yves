@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using scrapper_perfumes_yves_common.Configuration;
 using scrapper_perfumes_yves_data.Models;
 using System;
 using System.Threading.Channels;
@@ -12,7 +13,7 @@ namespace scrapper_perfumes_yves_data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var connectionString = "holis";
+            var connectionString = ConfigurationFile.GetConfiguration().DatabaseUrl;
             optionsBuilder.UseNpgsql($"{connectionString}");
         }
     }

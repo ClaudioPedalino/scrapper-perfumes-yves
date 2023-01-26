@@ -1,0 +1,23 @@
+{
+  "Config": {
+    "DatabaseUrl": "",
+    "PrintDataInConsole": true,
+    "Sites": [
+      {
+        "Section": "Perfumes Unisex",
+        "Url": "https://yvesdorgeval.empretienda.com.ar/perfumes/perfumes-unisex",
+        "Enable": true
+      },
+      {
+        "Section": "Perfumes masculinos",
+        "Url": "https://yvesdorgeval.empretienda.com.ar/perfumes/perfumes-masculinos",
+        "Enable": false
+      },
+      {
+        "Section": "Perfumes femeninos",
+        "Url": "https://yvesdorgeval.empretienda.com.ar/perfumes/perfumes-femeninos",
+        "Enable": false
+      }
+    ]
+  }
+}

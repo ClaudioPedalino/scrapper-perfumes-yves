@@ -1,10 +1,10 @@
 ﻿using OpenQA.Selenium;
-using scrapper_perfumes_yves_console.Configuration;
+using scrapper_perfumes_yves_common.Configuration;
 using scrapper_perfumes_yves_data.Models;
 
 namespace scrapper_perfumes_yves_console.Common
 {
-    internal class Scrapper
+    internal static class Scrapper
     {
         internal static void LoadWholeData(IWebDriver driver)
         {
@@ -27,7 +27,7 @@ namespace scrapper_perfumes_yves_console.Common
             }
         }
 
-        internal static List<Item> GetItemsData(IWebDriver driver)
+        internal static List<Item> GetItemsData(IWebDriver driver, Site site)
         {
             var items = driver.FindElements(By.ClassName("products-feed__product-wrapper"));
 
@@ -46,7 +46,7 @@ namespace scrapper_perfumes_yves_console.Common
                 currentItem.DetailUrl = item.FindElement(By.TagName("h3")).FindElement(By.TagName("a")).GetAttribute("href");
                 currentItem.ImageUrl = media.FindElement(By.TagName("img")).GetAttribute("src");
                 currentItem.HasStock = true;
-                currentItem.Tag = "Test";
+                currentItem.Tag = site.Section;
 
                 try
                 {
@@ -63,7 +63,8 @@ namespace scrapper_perfumes_yves_console.Common
 
                 data.Add(currentItem);
 
-                if (Config.PrintDataInConsole) Printer.PrintItemDetail(currentItem);
+                if (ConfigurationFile.GetConfiguration().PrintDataInConsole)
+                    Printer.PrintItemDetail(currentItem);
             }
 
             return data;
