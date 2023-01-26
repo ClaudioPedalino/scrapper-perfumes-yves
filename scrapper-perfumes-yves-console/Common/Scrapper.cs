@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 using scrapper_perfumes_yves_console.Configuration;
-using scrapper_perfumes_yves_console.Models;
+using scrapper_perfumes_yves_data.Models;
 
 namespace scrapper_perfumes_yves_console.Common
 {
@@ -46,6 +46,7 @@ namespace scrapper_perfumes_yves_console.Common
                 currentItem.DetailUrl = item.FindElement(By.TagName("h3")).FindElement(By.TagName("a")).GetAttribute("href");
                 currentItem.ImageUrl = media.FindElement(By.TagName("img")).GetAttribute("src");
                 currentItem.HasStock = true;
+                currentItem.Tag = "Test";
 
                 try
                 {

@@ -5,6 +5,8 @@ VisualStudioVersion = 17.5.33103.201
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "scrapper-perfumes-yves-console", "scrapper-perfumes-yves-console\scrapper-perfumes-yves-console.csproj", "{1F3FD89C-592E-475D-9F65-4D7E6C8FFFB9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "scrapper-perfumes-yves-data", "scrapper-perfumes-yves-data\scrapper-perfumes-yves-data.csproj", "{C57AEBCF-2E45-4171-9C15-6088AFB3FF0F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{1F3FD89C-592E-475D-9F65-4D7E6C8FFFB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F3FD89C-592E-475D-9F65-4D7E6C8FFFB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F3FD89C-592E-475D-9F65-4D7E6C8FFFB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C57AEBCF-2E45-4171-9C15-6088AFB3FF0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C57AEBCF-2E45-4171-9C15-6088AFB3FF0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C57AEBCF-2E45-4171-9C15-6088AFB3FF0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C57AEBCF-2E45-4171-9C15-6088AFB3FF0F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

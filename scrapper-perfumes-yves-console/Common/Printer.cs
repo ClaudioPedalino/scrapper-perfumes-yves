@@ -1,9 +1,4 @@
-﻿using scrapper_perfumes_yves_console.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using scrapper_perfumes_yves_data.Models;
 
 namespace scrapper_perfumes_yves_console.Common
 {

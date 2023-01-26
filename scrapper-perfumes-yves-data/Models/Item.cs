@@ -1,7 +1,11 @@
-﻿namespace scrapper_perfumes_yves_console.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace scrapper_perfumes_yves_data.Models
 {
-    internal class Item
+    public class Item
     {
+        [Key] public Guid Id { get; set; }
+
         public string Name { get; set; }
         public string Price { get; set; }
         public bool HasStock { get; set; }
