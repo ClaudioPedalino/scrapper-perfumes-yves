@@ -23,12 +23,57 @@ using (IWebDriver driver = new ChromeDriver(dirverPath))
 
     // 02. Get items list
     var items = driver.FindElements(By.ClassName("products-feed__product-wrapper"));
-    global::System.Console.WriteLine(   items.Count);
+    global::System.Console.WriteLine($"Total items: {items.Count}");
+
+
+    foreach (var item in items)
+    {
+        var hasStock = true;
+
+        var name = item.FindElement(By.TagName("h3")).Text;
+        var price = item.FindElement(By.ClassName("products-feed__product-price")).Text;
+        var url = item.FindElement(By.TagName("h3")).FindElement(By.TagName("a")).GetAttribute("href");
+        var media = item
+            .FindElement(By.ClassName("products-feed__product-media"))
+            .FindElement(By.TagName("a"));
+
+        var image = media.FindElement(By.TagName("img")).GetAttribute("src");
+
+        try
+        {
+            var noStock = media.FindElement(By.TagName("span"));
+            if (noStock != null)
+            {
+                hasStock = false;
+            }
+        }
+        catch (Exception)
+        {
+
+        }
+
+
+        if (hasStock)
+        {
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+        }
+        else
+        {
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+        }
+
+        Console.WriteLine($"Name is: {name} || Price is: {price}");
+        Console.WriteLine($"Url is: {url}");
+        Console.WriteLine($"Image sourse is: {image}");
+        Console.WriteLine("...");
+
+        Console.ResetColor();
+    }
 
 
     //Close Driver
+    Console.WriteLine("End!");
     driver.Quit();
     Environment.Exit(0);
 }
 
-Console.WriteLine("End!");
