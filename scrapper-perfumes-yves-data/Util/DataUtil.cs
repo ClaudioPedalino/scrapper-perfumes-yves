@@ -4,6 +4,12 @@ namespace scrapper_perfumes_yves_data.Util
 {
     public static class DataUtil
     {
+        public static List<Item> GetItems()
+        {
+            var dataContext = new DataContext();
+            return dataContext.Items.ToList();
+        }
+
         public static void SaveItemsBySite(string section, List<Item> scrappedItems)
         {
             var dataContext = new DataContext();
