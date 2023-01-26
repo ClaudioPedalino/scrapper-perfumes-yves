@@ -1,8 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using scrapper_perfumes_yves_common.Configuration;
 using scrapper_perfumes_yves_data.Models;
-using System;
-using System.Threading.Channels;
 
 namespace scrapper_perfumes_yves_data
 {

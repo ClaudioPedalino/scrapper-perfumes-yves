@@ -1,5 +1,4 @@
 ﻿using scrapper_perfumes_yves_data.Models;
-using System.Diagnostics.CodeAnalysis;
 
 namespace scrapper_perfumes_yves_data.Extensions
 {
