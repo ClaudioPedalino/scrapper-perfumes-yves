@@ -15,7 +15,7 @@ using (IWebDriver driver = new ChromeDriver(dirverPath))
         Scrapper.LoadWholeData(driver);
 
         var items = Scrapper.GetItemsData(driver);
-
+        
         Console.WriteLine($"Total items {site.Key}: {items.Count}");
     }
 
