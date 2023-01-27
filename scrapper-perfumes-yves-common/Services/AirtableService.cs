@@ -68,7 +68,7 @@ namespace scrapper_perfumes_yves_common.Services
 
         public async Task BulkFromDatabaseToAirtable()
         {
-            var result = _productService.GetAll();
+            var result = await _productService.GetAll();
 
             using AirtableBase airtableBase = AirtableHelper.GetConnection(_configuration.Value);
 

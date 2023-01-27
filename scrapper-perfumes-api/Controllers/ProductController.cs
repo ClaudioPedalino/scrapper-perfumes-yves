@@ -23,27 +23,27 @@ namespace scrapper_perfumes_api.Controllers
         [HttpGet]
         [Time]
         //[OutputCache(Duration = 30)]
-        public IResult GetAll()
+        public async Task<IResult> GetAll()
         {
-            var result = _service.GetAll();
+            var result = await _service.GetAll();
 
             return Results.Ok(result);
         }
 
 
         [HttpGet("overview")]
-        public IResult GetOverview()
+        public async Task<IResult> GetOverview()
         {
-            var result = _service.GetOverview();
+            var result = await _service.GetOverview();
 
             return Results.Ok(result);
         }
 
 
         [HttpGet("reset-database")]
-        public IResult ResetDatabase()
+        public async Task<IResult> ResetDatabase()
         {
-            _service.ResetDatabase();
+            await _service.ResetDatabase();
 
             return Results.Ok("finish");
         }

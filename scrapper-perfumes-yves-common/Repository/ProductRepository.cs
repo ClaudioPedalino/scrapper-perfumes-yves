@@ -1,4 +1,5 @@
-﻿using scrapper_perfumes_yves_common.Interfaces;
+﻿using Microsoft.EntityFrameworkCore;
+using scrapper_perfumes_yves_common.Interfaces;
 using scrapper_perfumes_yves_common.Models;
 
 namespace scrapper_perfumes_yves_common.Repository
@@ -12,18 +13,17 @@ namespace scrapper_perfumes_yves_common.Repository
             _dataContext = dataContext;
         }
 
-        public List<Product> GetItems()
+        public async Task<List<Product>> GetItems()
         {
-            return _dataContext.Products.ToList();
+            return await _dataContext.Products.ToListAsync();
         }
 
 
-        public void SaveItemsBySite(string section, List<Product> scrappedItems)
+        public async Task SaveItemsBySite(string section, List<Product> scrappedItems)
         {
             foreach (var entity in _dataContext.Products.Where(x => x.Section == section))
                 _dataContext.Products.Remove(entity);
-
-            _dataContext.SaveChanges();
+            //await _dataContext.SaveChangesAsync();
 
             #region TODO: Upsert (add new, update existing but modified, delete new non-existing
             //var currentDbData = dataContext.Items.ToList();
@@ -31,17 +31,17 @@ namespace scrapper_perfumes_yves_common.Repository
             //int updatedCount = updated.Count();
             #endregion
 
-            _dataContext.Products.AddRange(scrappedItems);
-            _dataContext.SaveChanges();
+            await _dataContext.Products.AddRangeAsync(scrappedItems);
+            await _dataContext.SaveChangesAsync();
         }
 
 
-        public void ResetData()
+        public async Task ResetData()
         {
             foreach (var entity in _dataContext.Products)
                 _dataContext.Products.Remove(entity);
 
-            _dataContext.SaveChanges();
+            await _dataContext.SaveChangesAsync();
         }
     }
 }

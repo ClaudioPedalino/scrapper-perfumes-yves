@@ -4,11 +4,9 @@ namespace scrapper_perfumes_yves_common.Interfaces
 {
     public interface IProductService
     {
-        IEnumerable<Product> GetAll();
-        IEnumerable<Overview> GetOverview();
+        Task<IEnumerable<Product>> GetAll();
+        Task<IEnumerable<Overview>> GetOverview();
 
-        void ResetDatabase();
-
-
+        Task ResetDatabase();
     }
 }

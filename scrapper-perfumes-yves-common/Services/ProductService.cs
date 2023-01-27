@@ -16,15 +16,15 @@ namespace scrapper_perfumes_yves_common.Services
             _repo = repo;
         }
 
-        public IEnumerable<Product> GetAll()
+        public async Task<IEnumerable<Product>> GetAll()
         {
-            var result = _repo.GetItems();
+            var result = await _repo.GetItems();
             return result;
         }
 
-        public IEnumerable<Overview> GetOverview()
+        public async Task<IEnumerable<Overview>> GetOverview()
         {
-            var result = _repo.GetItems();
+            var result = await _repo.GetItems();
 
             var response = result
                 .GroupBy(c => new { c.Section, })
@@ -39,9 +39,9 @@ namespace scrapper_perfumes_yves_common.Services
         }
 
 
-        public void ResetDatabase()
+        public async Task ResetDatabase()
         {
-            _repo.ResetData();
+            await _repo.ResetData();
         }
     }
 }
