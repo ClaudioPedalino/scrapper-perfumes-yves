@@ -6,5 +6,7 @@ namespace scrapper_perfumes_yves_common.Interfaces
     {
         Task<List<AirtableRecord>> GetAirtable();
         Task BulkFromDatabaseToAirtable();
+
+        Task ResetAirtableData();
     }
 }

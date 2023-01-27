@@ -5,7 +5,7 @@ using scrapper_perfumes_yves_common.ServiceConfiguration;
 
 namespace scrapper_perfumes_yves_common
 {
-    public class DataContext : DbContext
+    public sealed class DataContext : DbContext
     {
         private readonly IOptionsSnapshot<Configuration> _configuration;
 

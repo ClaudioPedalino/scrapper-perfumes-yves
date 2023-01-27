@@ -2,7 +2,7 @@
 
 namespace scrapper_perfumes_yves_common.Extensions
 {
-    public class YourEqualityComparer : IEqualityComparer<Product>
+    public sealed class YourEqualityComparer : IEqualityComparer<Product>
     {
 
         #region IEqualityComparer<ThisClass> Members

@@ -5,11 +5,10 @@ namespace scrapper_perfumes_api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ScrapperController : ControllerBase
+    public sealed class ScrapperController : ControllerBase
     {
         private readonly ILogger<ScrapperController> _logger;
         private readonly IScrapperService _service;
-
 
         public ScrapperController(ILogger<ScrapperController> logger, IScrapperService service)
         {

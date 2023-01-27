@@ -5,7 +5,7 @@ using scrapper_perfumes_yves_common.ServiceConfiguration;
 
 namespace scrapper_perfumes_yves_common.Services
 {
-    public class ProductService : IProductService
+    public sealed class ProductService : IProductService
     {
         private readonly IOptionsSnapshot<Configuration> _configuration;
         private readonly IProductRepository _repo;
@@ -39,13 +39,9 @@ namespace scrapper_perfumes_yves_common.Services
         }
 
 
-        public void ResetYvesData()
+        public void ResetDatabase()
         {
             _repo.ResetData();
         }
-
-
-
-
     }
 }

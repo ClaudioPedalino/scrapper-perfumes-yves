@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using System.Reflection;
+using scrapper_perfumes_yves_common.Helpers;
 
 namespace scrapper_perfumes_yves_common.Extension
 {
@@ -8,7 +8,13 @@ namespace scrapper_perfumes_yves_common.Extension
     {
         public static ChromeDriver GetDriver()
         {
-            return new ChromeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
+            // https://stackoverflow.com/questions/67858908/try-selenium-download-use-of-latest-chromedriver-exe-in-c-sharp-if-it-fails-to-i
+            var chromedriverInstaller = new ChromeDriverInstaller();
+            chromedriverInstaller.Install().Wait();
+
+
+            //return new ChromeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
+            return new ChromeDriver(AppDomain.CurrentDomain.BaseDirectory);
         }
 
         public static void GoTo(this IWebDriver driver, string url)

@@ -6,7 +6,8 @@ namespace scrapper_perfumes_yves_common.Interfaces
     {
         IEnumerable<Product> GetAll();
         IEnumerable<Overview> GetOverview();
-        void ResetYvesData();
+
+        void ResetDatabase();
 
 
     }

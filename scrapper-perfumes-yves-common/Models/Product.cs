@@ -2,7 +2,7 @@
 
 namespace scrapper_perfumes_yves_common.Models
 {
-    public class Product
+    public sealed class Product
     {
         [Key] public Guid Id { get; set; }
 
@@ -19,7 +19,7 @@ namespace scrapper_perfumes_yves_common.Models
 
         public decimal GetRelleserDiscount()
         {
-            return PriceReseller != default
+            return PriceReseller.HasValue
                 ? Math.Round(((PriceReseller.Value * 100 / Price / 100) - 1) / 100, 2)
                 : default;
         }

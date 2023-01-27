@@ -7,7 +7,7 @@ using scrapper_perfumes_yves_common.ServiceConfiguration;
 
 namespace scrapper_perfumes_yves_common.Services
 {
-    public class ScrapperService : IScrapperService
+    public sealed class ScrapperService : IScrapperService
     {
         private readonly IOptionsSnapshot<Configuration> _configuration;
         private readonly IProductRepository _repo;
