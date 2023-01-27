@@ -31,7 +31,7 @@ namespace scrapper_perfumes_yves_common.Services
                 Scrapper.LoadWholeData(driver);
 
                 var scrappedItems = Scrapper.GetItemsData(driver, site);
-                
+
                 if (_configuration.Value.PrintDataInConsole)
                     Printer.PrintItemDetail(scrappedItems);
 

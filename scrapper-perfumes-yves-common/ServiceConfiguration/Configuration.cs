@@ -13,6 +13,8 @@
         public bool DatabaseEnabled { get; set; }
         public string DatabaseUrl { get; set; }
         public bool FileEnabled { get; set; }
+        public string AritableApiKey { get; set; }
+        public string AritableBaseId { get; set; }
     }
 
     public class Site

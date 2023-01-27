@@ -38,9 +38,14 @@ namespace scrapper_perfumes_yves_common.Services
             return response;
         }
 
+
         public void ResetYvesData()
         {
             _repo.ResetData();
         }
+
+
+
+
     }
 }

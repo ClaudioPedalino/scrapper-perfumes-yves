@@ -19,8 +19,8 @@ namespace scrapper_perfumes_yves_common.Models
 
         public decimal GetRelleserDiscount()
         {
-            return PriceReseller != default 
-                ? Math.Round(((PriceReseller.Value * 100 / Price / 100) - 1) / 100, 2) 
+            return PriceReseller != default
+                ? Math.Round(((PriceReseller.Value * 100 / Price / 100) - 1) / 100, 2)
                 : default;
         }
     }
